@@ -13,7 +13,7 @@ app.set("views", path.join(__dirname + "views"));
 
 //Middlewares
 
-//todo la información que venga del formulario se guarda e json
+//todo la información que venga del formulario se guarda en json
 app.use(express.urlencoded({ extended: false }));
 
 //global-Variables
@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 });
 //static files
 //app.use(express.static('public'))
-app.use(express.static(path.join(__dirname + "public"))) //Para cualquier navegadro accesa facilmente, es general
+app.use(express.static(path.join(__dirname + "public"))) //Para que cualquier navegador acceda facilmente, es general
 
 
 module.exports = app;

@@ -22,15 +22,16 @@ app.set("views", path.join(__dirname, "views"));
 // app.set("views engine", ".hbs");
 
 app.engine(
-  '.hbs',
+  ".hbs",
   exphbs.engine({
-    defaultLayout: 'main',
+    defaultLayout: "main",
     layoutsDir: path.join(app.set("views"), "layouts"),
     partialsDir: path.join(app.set("views"), "partials"),
-    extname: '.hbs',
+    extname: ".hbs",
   })
 ); //Nuestro motor de plantilla handlebars
-app.set('view engine', '.hbs');
+app.set("view engine", ".hbs");
+
 //Middlewares
 
 //todo la información que venga del formulario se guarda en json
@@ -38,15 +39,15 @@ app.use(express.urlencoded({ extended: false }));
 
 //global-Variables
 
-
-console.log("Views Directory:", path.join(__dirname, "views"));
-console.log("Public Directory:", path.join(__dirname, "public"));
 //routes
-app.get('/', (req, res) => {
-  //res.send("HELLO WORLD")
+app.use(require("./routes/index.routes"));
 
-  res.render('index');
-});
+// app.get("/", (req, res) => {
+//   //res.send("HELLO WORLD")
+
+//   res.render("");
+// })index;
+
 //static files
 //app.use(express.static('public'))
 //app.use(express.static(path.join(__dirname + "public"))); //Para que cualquier navegador acceda facilmente, es general

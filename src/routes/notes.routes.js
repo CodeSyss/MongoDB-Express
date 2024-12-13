@@ -17,7 +17,7 @@ const router = Router();
 
 //New Note
 router.get("/notes/add", renderNoteForm);
-router.post("/notes/add", createNewNote);
+router.post("/notes/new_note", createNewNote);
 
 // Get all note
 router.get("/notes", renderNotes);

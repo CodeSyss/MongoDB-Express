@@ -3,11 +3,11 @@ const notesCtl = {};
 module.exports = notesCtl;
 
 notesCtl.renderNoteForm = (req, res) => {
-  res.send("note add");
+  res.render("notes/new_note");
 };
 
 notesCtl.createNewNote = (req, res) => {
-  res.send("new nota");
+  res.send("new note");
 };
 
 notesCtl.renderNotes = (req, res) => {

@@ -22,9 +22,9 @@ router.post("/notes/new_note", createNewNote);
 // Get all note
 router.get("/notes", renderNotes);
 
-//Update notes
-router.get("/note/update/:id", renderEditForm); //Mostrar el form 
-router.put("/note/update/:id", updateNote) // Actualizar form 
+//edit notes
+router.get("/note/edit/:id", renderEditForm); //Mostrar el form 
+router.put("/note/edit/:id", updateNote) // Actualizar form 
 
 //Delete Notes
 router.delete('/notes/delete/:id', deleteNote)

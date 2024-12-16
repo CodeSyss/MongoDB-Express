@@ -2,6 +2,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const path = require("path");
 const morgan = require("morgan");
+const methodOverride = require("method-override");
 
 //Initializations
 const app = express();
@@ -34,8 +35,8 @@ app.engine(
 app.set("view engine", ".hbs");
 
 //Middlewares
-app.use(morgan('dev'));
-
+app.use(morgan("dev"));
+app.use(methodOverride("_method"));
 //todo la información que venga del formulario se guarda en json
 app.use(express.urlencoded({ extended: false }));
 
@@ -46,7 +47,7 @@ app.use(require("./routes/index.routes"));
 app.use(require("./routes/notes.routes"));
 
 // app.get("/", (req, res) => {
-//   //res.send("HELLO WORLD")  
+//   //res.send("HELLO WORLD")
 
 //   res.render("");
 // })index;

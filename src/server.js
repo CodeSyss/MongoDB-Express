@@ -36,7 +36,7 @@ app.set("view engine", ".hbs");
 
 //Middlewares
 app.use(morgan("dev"));
-app.use(methodOverride("_method"));
+app.use(methodOverride("_method")); // te permite hacer metodos delete, put dentro de un formulario
 //todo la información que venga del formulario se guarda en json
 app.use(express.urlencoded({ extended: false }));
 
@@ -56,4 +56,5 @@ app.use(require("./routes/notes.routes"));
 //app.use(express.static('public'))
 //app.use(express.static(path.join(__dirname + "public"))); //Para que cualquier navegador acceda facilmente, es general
 app.use(express.static(path.join(__dirname, "public"))); // Archivos estáticos
+
 module.exports = app;

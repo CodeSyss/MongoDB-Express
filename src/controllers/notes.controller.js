@@ -12,6 +12,7 @@ notesCtl.createNewNote = async (req, res) => {
   //title: title ES LO MISMO QUE ESCRIBIR TITLE SOLO
   const newNote = new Note({ title, description });
   await newNote.save();
+  req.flash("success_msg", "Note added Successfully");
   // Al operar con la db es asíncrono
   res.redirect("/notes");
 };
@@ -34,10 +35,12 @@ notesCtl.renderEditForm = async (req, res) => {
 notesCtl.updateNote = async (req, res) => {
   const { title, description } = req.body;
   await Note.findByIdAndUpdate(req.params.id, { title, description });
+  req.flash("success_msg", "Note Updated Successfully");
   res.redirect("/notes");
 };
 
 notesCtl.deleteNote = async (req, res) => {
   await Note.findByIdAndDelete(req.params.id);
+  req.flash("success_msg", "Note Deleted Successfully");
   res.redirect("/notes");
 };

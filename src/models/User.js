@@ -15,6 +15,7 @@ const UserSchema = new Schema(
     email: {
       type: String,
       require: true,
+      unique: true,
     },
     password: {
       type: String,
@@ -24,7 +25,7 @@ const UserSchema = new Schema(
   { timestamps: true }
 );
 
-UserSchema.methods.encrypPassword = async (password) => {
+UserSchema.methods.encryptPassword = async (password) => {
   //códogo asíncrono que se puede ejecutar despues y el progrma sigue funcionando, por eso await
   const salt = await bcrypt.genSalt(10);
   return await bcrypt.hash(password, salt);
@@ -34,4 +35,4 @@ UserSchema.methods.matchPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
-module.exports = model("User", UserSchema);
+module.exports = model("User", UserSchema, "NEWuser");

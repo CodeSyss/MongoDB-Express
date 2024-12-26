@@ -1,6 +1,7 @@
 const CrlUsers = {};
 // const { text } = require("express");
 const User = require("../models/User");
+const passport = require("passport");
 
 CrlUsers.renderLogin = (req, res) => {
   res.send("Rendered login");
@@ -25,7 +26,7 @@ CrlUsers.signUp = async (req, res) => {
       name,
       email,
       password,
-      confirm_password,
+      confirm_password, 
     });
   } else {
     const emailUser = await User.findOne({
@@ -48,9 +49,11 @@ CrlUsers.renderSignInform = (req, res) => {
   res.render("users/signin");
 };
 
-CrlUsers.signIn = (req, res) => {
-  res.send("sign in");
-};
+CrlUsers.signIn = passport.authenticate("local", {
+  failureRedirect: "/users/signin",
+  successRedirect: "/notes",
+  failureFlash: true,
+});
 
 CrlUsers.logout = (req, res) => {
   res.send("logout");

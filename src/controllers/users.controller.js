@@ -26,7 +26,7 @@ CrlUsers.signUp = async (req, res) => {
       name,
       email,
       password,
-      confirm_password, 
+      confirm_password,
     });
   } else {
     const emailUser = await User.findOne({
@@ -55,8 +55,15 @@ CrlUsers.signIn = passport.authenticate("local", {
   failureFlash: true,
 });
 
-CrlUsers.logout = (req, res) => {
-  res.send("logout");
+CrlUsers.logout = (req, res, next) => {
+  req.logout(function(err) {
+    if (err) { 
+      return next(err); // Si ocurre un error al cerrar sesión, pásalo al manejador de errores
+    }
+    req.flash("success_msg", "You are logged out now. ");
+    res.redirect("/users/signin");
+  });
 };
+
 
 module.exports = CrlUsers;

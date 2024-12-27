@@ -60,6 +60,8 @@ app.use((req, res, next) => {
   res.locals.error_msg = req.flash("error_msg");
   //Para que passport muestre los errores.
   res.locals.error = req.flash("error");
+  //Cuando se ingresa el usuario se guarda un user en session y con una variable global se puede capturar a traves de passport
+  res.locals.user = req.user || null;
   next();
 });
 

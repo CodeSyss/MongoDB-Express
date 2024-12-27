@@ -13,10 +13,14 @@ const NoteSchema = new Schema(
       type: String,
       required: true,
     },
+    user: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = model("Note", NoteSchema, 'NEWNotes');
+module.exports = model("Note", NoteSchema, "NEWNotes");
